@@ -1,2 +1,9 @@
 # Ignore node modules
 node_modules/
+
+# SASS compiler
+src/public/css/*.css.map
+src/public/css/*.scss
+
+# Environment
+src/env/

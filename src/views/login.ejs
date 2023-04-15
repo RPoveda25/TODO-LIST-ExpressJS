@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/index.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-form">
+        <h2>Login</h2>
+        <form action="/auth" method="post">
+          <div class="field">
+            <input
+              type="text"
+              name="user"
+              id="user"
+              placeholder="User"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="field">
+            <input type="submit" value="Login" class="btn-login" />
+          </div>
+        </form>
+        <a href="register" class="btn-resgister"> Register </a>
+        <a href="/"> Home </a>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if(typeof alert != "undefined" ) { %>
+    <script>
+      Swal.fire({
+        title: "<%= alertTitle %>",
+        text: "<%= alertMessage %>",
+        icon: "<%= alertIcon %>",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        window.location = "<%= route %>";
+      });
+    </script>
+    <%} %>
+  </body>
+</html>

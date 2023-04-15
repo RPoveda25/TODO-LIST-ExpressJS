@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/index.css" />
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1>Home Page</h1>
+        <% if (logged) { %>
+        <h3>User connected: <strong><%= user %></strong></h3>
+        <a href="/logout"> Logout </a>
+        <% } else { %>
+        <h3>User connected: <%= user %></h3>
+        <div>
+          <a href="/login"> Login </a>
+          <a href="/register"> Register</a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
