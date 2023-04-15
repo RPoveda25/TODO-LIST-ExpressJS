@@ -7,7 +7,7 @@ const router = Router();
 // login routes --------------------------------------------
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { logged: req.session.logged });
 });
 
 // autentication
@@ -30,6 +30,7 @@ router.post("/auth", async (req, res) => {
             alertMessage: "Error authent",
             alertIcon: "error",
             route: "/login",
+            logged: req.session.logged,
           });
         } else {
           req.session.logged = true;
@@ -40,6 +41,7 @@ router.post("/auth", async (req, res) => {
             alertMessage: "Login successful",
             alertIcon: "success",
             route: "/",
+            logged: req.session.logged,
           });
         }
       }
@@ -49,7 +51,7 @@ router.post("/auth", async (req, res) => {
 
 // register routes ------------------------------------------
 router.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", { logged: req.session.logged });
 });
 
 router.post("/register", async (req, res) => {
@@ -62,6 +64,7 @@ router.post("/register", async (req, res) => {
       alertMessage: "Password not matches",
       alertIcon: "error",
       route: "",
+      logged: req.session.logged,
     });
   } else {
     let hashPass = await bycrytpjs.hash(data.password, 8);
@@ -84,6 +87,7 @@ router.post("/register", async (req, res) => {
             alertMessage: "Resgiter successfully!",
             alertIcon: "success",
             route: "/login",
+            logged: req.session.logged,
           });
         }
       }
